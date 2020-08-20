@@ -1,0 +1,42 @@
+
+    --[[render:addLayer("test")
+
+    event:subscribe("update", function (  )
+        obj1:componentsEvent("update", nil, obj1.data, "test")
+    end)
+
+    event:subscribe("keypressed", function ( _, key )
+        if key == "a" then obj1.data.pic = obj1.data.pic - 1
+        elseif key == "d" then obj1.data.pic = obj1.data.pic + 1 end
+        log:info(obj1.data.pic)
+    end)
+
+    for i = 1, 10 do
+        log:info(i)
+        local object = gameobject:new()
+        object:addComponent(sprites:new(), {
+            pic = math.random(25),
+            sprites = {
+                { "sprites.png", 10, 5, 100, 100 },
+            }
+        })
+        object.data.x = math.random(800)
+        object.data.y = math.random(600)
+
+        event:subscribe("update", function (  )
+            object:componentsEvent("update", nil, object.data, "test")
+        end)
+
+        event:subscribe("keypressed", function ( _, key )
+            if key == "a" then object.data.pic = object.data.pic - 1
+            elseif key == "d" then object.data.pic = object.data.pic + 1 end
+        end)
+
+    end]]
+
+
+
+
+    --[[self:nodePairs(function ( gameobject, ... )
+            gameobject:componentsEvent("update", nil, gameobject.data, ...)
+    end)]]

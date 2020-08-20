@@ -1,0 +1,14 @@
+difficulty: 10
+[control]
+    [player1]
+        defend: "h"
+        attack: "f"
+        jump: "g"
+    [/player1]
+[/control]
+[graphics]
+    gameWidth: 977
+    gameHeight: 550
+    fullscreen: false
+    ratio: false
+[/graphics]

@@ -1,0 +1,14 @@
+[head]
+    <sprite>
+        file: "sprites/enemy/IDLE_1.png"
+    </sprite>
+[/head]
+
+<frame> 1 IDLE
+    pic: 1 next: 1 wait: 1
+    <itr>
+        kind: 0
+        frame_the_character_goes_into_if_hit: 120
+        frame_the_character_goes_into_if_no_hit_haha_loser: 696969
+    <itr>
+</frame>

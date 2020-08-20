@@ -1,0 +1,259 @@
+music: "res/main.mp3"
+background: 16 32 108 255
+
+<node:cursor> </node>
+
+<node:image> bg_image
+    pic: 0
+    <sprite>
+        file: "res/menu/1.png"
+    </sprite>
+    <sprite>
+        file: "res/menu/2.png"
+    </sprite>
+    <sprite>
+        file: "res/menu/3.png"
+    </sprite>
+    <sprite>
+        file: "res/menu/4.png"
+    </sprite>
+    <sprite>
+        file: "res/menu/5.png"
+    </sprite>
+    <sprite>
+        file: "res/menu/6.png"
+    </sprite>
+    <sprite>
+        file: "res/menu/7.png"
+    </sprite>
+    <sprite>
+        file: "res/menu/8.png"
+    </sprite>
+    <sprite>
+        file: "res/menu/9.png"
+    </sprite>
+    <sprite>
+        file: "res/menu/10.png"
+    </sprite>
+    <sprite>
+        file: "res/menu/11.png"
+    </sprite>
+    <sprite>
+        file: "res/menu/12.png"
+    </sprite>
+    <sprite>
+        file: "res/menu/13.png"
+    </sprite>
+</node>
+
+
+<node:image> logotype
+    pic: 1 x: 245 y: 95
+    <sprite>
+        file: "res/UI/Menu_Clip.png" w: 496 h: 80 oy: 41 
+    </sprite>
+</node>
+
+
+<node:button> game_start button
+    x: 367 y: 215
+
+        [triggers]
+            idle: 1  hover: 2  click: 3
+        [/triggers]
+
+        <sprite>
+            file: "res/UI/Menu_Clip5.png" w: 256 h: 29 ox: 14 oy: 13 
+        </sprite>
+        <sprite>
+            file: "res/UI/Menu_Clip.png" w: 256 h: 26 ox: 535 oy: 105 
+        </sprite>
+
+    <frame> 1
+        pic: 1 next: 1 wait: 1
+        <bdy>
+            x: 20 y: 1 w: 205 h: 26 z: 1 d: 15
+        </bdy>
+        <state> button_idle </state>
+    </frame>
+
+    <frame> 2
+        pic: 2 next: 1 wait: 1
+        <bdy>
+            x: 20 y: 1 w: 205 h: 26 z: 1 d: 15
+        </bdy>
+        <state> button_hover </state>
+    </frame>
+
+    <frame> 3
+        pic: 2 next: 1 wait: 10
+        <bdy>
+            x: 20 y: 1 w: 205 h: 26 z: 1 d: 15
+        </bdy>
+    </frame>    
+
+</node>
+
+
+
+
+<node:button> network_game button
+    x: 367 y: 247
+
+        [triggers]
+            idle: 1  hover: 2  click: 3
+        [/triggers]
+
+        <sprite>
+            file: "res/UI/Menu_Clip5.png" w: 256 h: 29 ox: 14 oy: 45 
+        </sprite>
+        <sprite>
+            file: "res/UI/Menu_Clip.png" w: 256 h: 26 ox: 535 oy: 137 
+        </sprite>
+
+    <frame> 1
+        pic: 1 next: 1 wait: 1
+        <bdy>
+            x: 5 y: 1 w: 235 h: 26 z: 1 d: 15
+        </bdy>
+        <state> button_idle </state>
+    </frame>
+
+    <frame> 2
+        pic: 2 next: 1 wait: 1
+        <bdy>
+            x: 5 y: 1 w: 235 h: 26 z: 1 d: 15
+        </bdy>
+        <state> button_hover </state>
+    </frame>
+
+    <frame> 3
+        pic: 2 next: 1 wait: 10
+        <bdy>
+            x: 5 y: 1 w: 235 h: 26 z: 1 d: 15
+        </bdy>
+    </frame>    
+
+</node>
+
+
+
+<node:button> control_settings button
+    x: 367 y: 278
+
+        [triggers]
+            idle: 1  hover: 2  click: 3
+        [/triggers]
+
+        <sprite>
+            file: "res/UI/Menu_Clip5.png" w: 256 h: 29 ox: 14 oy: 76 
+        </sprite>
+        <sprite>
+            file: "res/UI/Menu_Clip.png" w: 256 h: 26 ox: 535 oy: 168
+        </sprite>
+
+    <frame> 1
+        pic: 1 next: 1 wait: 1
+        <bdy>
+            x: 0 y: 1 w: 244 h: 26 z: 1 d: 15
+        </bdy>
+        <state> button_idle </state>
+    </frame>
+
+    <frame> 2
+        pic: 2 next: 1 wait: 1
+        <bdy>
+            x: 0 y: 1 w: 244 h: 26 z: 1 d: 15
+        </bdy>
+        <state> button_hover </state>
+    </frame>
+
+    <frame> 3
+        pic: 2 next: 1 wait: 10
+        <bdy>
+            x: 0 y: 1 w: 244 h: 26 z: 1 d: 15
+        </bdy>
+    </frame>    
+
+</node>
+
+
+<node:button> recording_info button
+    x: 367 y: 309
+
+        [triggers]
+            idle: 1  hover: 2  click: 3
+        [/triggers]
+
+        <sprite>
+            file: "res/UI/Menu_Clip5.png" w: 256 h: 29 ox: 16 oy: 108 
+        </sprite>
+        <sprite>
+            file: "res/UI/Menu_Clip5.png" w: 240 h: 26 ox: 283 oy: 1
+        </sprite>
+
+    <frame> 1
+        pic: 1 next: 1 wait: 1
+        <bdy>
+            x: 8 y: 1 w: 227 h: 26 z: 1 d: 15
+        </bdy>
+        <state> button_idle </state>
+    </frame>
+
+    <frame> 2
+        pic: 2 next: 1 wait: 1
+        <bdy>
+            x: 8 y: 1 w: 227 h: 26 z: 1 d: 15
+        </bdy>
+        <state> button_hover </state>
+    </frame>
+
+    <frame> 3
+        pic: 2 next: 1 wait: 10
+        <bdy>
+            x: 8 y: 1 w: 227 h: 26 z: 1 d: 15
+        </bdy>
+    </frame>    
+
+</node>
+
+
+
+<node:button> oficial_website button
+    x: 367 y: 341
+
+        [triggers]
+            idle: 1  hover: 2  click: 3
+        [/triggers]
+
+        <sprite>
+            file: "res/UI/Menu_Clip5.png" w: 256 h: 29 ox: 16 oy: 139 
+        </sprite>
+        <sprite>
+            file: "res/UI/Menu_Clip5.png" w: 240 h: 26 ox: 283 oy: 28
+        </sprite>
+
+    <frame> 1
+        pic: 1 next: 1 wait: 1
+        <bdy>
+            x: 0 y: 1 w: 241 h: 26 z: 1 d: 15
+        </bdy>
+        <state> button_idle </state>
+    </frame>
+
+    <frame> 2
+        pic: 2 next: 1 wait: 1
+        <bdy>
+            x: 0 y: 1 w: 241 h: 26 z: 1 d: 15
+        </bdy>
+        <state> button_hover </state>
+    </frame>
+
+    <frame> 3
+        pic: 2 next: 1 wait: 10
+        <bdy>
+            x: 0 y: 1 w: 241 h: 26 z: 1 d: 15
+        </bdy>
+    </frame>    
+
+</node>
