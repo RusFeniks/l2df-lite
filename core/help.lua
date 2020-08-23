@@ -49,6 +49,11 @@ local help = {}
     end
 
 
+    function help.getFileExtension(url)
+        return url:match("^.+(%..+)$")
+    end
+
+
     function help.dump(_i, _p)
         _p = _p or ""
         local _s = tostring(_i)

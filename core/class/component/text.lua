@@ -6,7 +6,7 @@ local help = core:require("help")
 
 local manager = {
     render = core:require("manager.render"),
-    resource = core:require("manager.resource")
+    font = core:require("manager.font")
 }
 
 local floor = math.floor
@@ -35,23 +35,31 @@ local text = core:require("class.component"):extend()
         _data.centerx = _data.centerx or 0
         _data.centery = _data.centery or 0
 
-        _data.text = _kwargs.text and tostring(_kwargs.text) or nil
+        _storage.text = _kwargs.text and tostring(_kwargs.text) or nil
+        _storage.font = _kwargs.font or nil
+        _storage.align = _kwargs.align or "left"
+        _storage.limit = _kwargs.width
     end
 
     function text:update(_gameobject, _input)
-        
+
         _input = _input or {  }
         local _data = _gameobject.data
+        local _storage = _gameobject.data[self]
 
-        if not _data.text then return end
+        if not _storage.text then return end
         manager.render:draw({
             layer = _input.layer or _data.layer,
-            text = _data.text,
+            text = _storage.text,
+            font = manager.font:get(_storage.font),
+            limit = _storage.limit,
+            align = _storage.align,
             x = _data._x + _data.x,
             y = _data._y + _data.y,
             z = _data._z + _data.z,
             ox = _data.centerx,
             oy = _data.centery,
+            color = { 1, 1, 1, 1 }
         })
     end
 

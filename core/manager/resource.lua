@@ -6,6 +6,8 @@ local log = core:require("log")
 local help = core:require("help")
 local fs = love and love.filesystem
 
+local getFileExtension = help.getFileExtension
+
 local class = {
     storage = core:require("class.storage"),
     plug = core:require("class.plug")
@@ -32,10 +34,6 @@ local resource = {}
             end
         },
     }
-
-    local function getFileExtension(url)
-        return url:match("^.+(%..+)$")
-    end
 
     local function fileCheck ( _filepath )
         if type(_filepath) ~= "string" or _filepath == "" then
@@ -161,7 +159,7 @@ local resource = {}
     end
 
     function resource:loadASYNC(_filepath, _callback)
-        if self:has(_filepath) then 
+        if self:has(_filepath) then
             _callback = _callback or function ()  end
             _callback(self:get(_filepath), _filepath)
             return self:get(_filepath) end

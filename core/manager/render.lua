@@ -25,7 +25,7 @@ local render = {}
     ---Разрешение игры, его будет использовать основной холст
     local resolutionX = 0
     local resolutionY = 0
-    
+
     ---Параметры основного холста
     local mainCanvas = love.graphics.newCanvas( )
     local mainCanvasOffsetX = 0
@@ -50,7 +50,7 @@ local render = {}
             draw(_e.resource, _e.sprite, _e.x, _e.y, _e.r, _e.sx, _e.sy, _e.ox, _e.oy, _e.kx, _e.ky)
         elseif _e.text then
             if not type(_e.text == "string") then return end
-            printf( _e.text, _e.x, _e.y, _e.limit or loveNewFont():getWidth(_e.text) )
+            printf( _e.text, _e.font, _e.x, _e.y, _e.limit or _e.font:getWidth(_e.text), _e.align, _e.r, _e.sx, _e.sy, _e.ox, _e.oy, _e.kx, _e.ky )
         elseif _e.fill then
             rectangle( _e.fill, _e.x1, _e.y1, _e.x2 - _e.x1, _e.y2 - _e.y1 )
         end
@@ -73,10 +73,10 @@ local render = {}
     ---Подготовка холста
     local function canvasInit ()
         love.graphics.setDefaultFilter("nearest", "nearest")
-        
+
         resolutionX = core:getSettings("graphics.gameWidth", 977)
         resolutionY = core:getSettings("graphics.gameHeight", 550)
-        
+
         windowWidth, windowHeight = resolutionX, resolutionY
         love.window.setMode( windowWidth, windowHeight, {
             resizable = true,
@@ -120,7 +120,7 @@ local render = {}
 
         canvasInit()
         resize(windowWidth, windowHeight)
-        
+
         core:hook("update", function ( ... )
             mainCanvas:renderTo( function ( ... )
                 self:update(...)
@@ -136,7 +136,7 @@ local render = {}
         log:info("Render manager create hook to draw function for draw objects on screen")
         log:success("Render manager initialized!")
     end
-    
+
     function render:getScaleInfo()
         return mainCanvasScaleX, mainCanvasScaleY, mainCanvasOffsetX, mainCanvasOffsetY
     end
@@ -161,9 +161,9 @@ local render = {}
 
         local _layer, _ox, _oy, _scale, _bg
         for _id = 1, #layers do
-            
+
             _layer = layers[_id]
-            
+
             _ox = _layer.camera.ox
             _oy = _layer.camera.oy
             _scale = _layer.camera.scale
@@ -179,7 +179,7 @@ local render = {}
                     _layer.z[_index] = { }
                 end
             end)
-            
+
             draw(_layer.canvas, 0, 0, 0, _scale, _scale, _ox, _oy )
 
         end
@@ -204,13 +204,13 @@ local render = {}
 
     function render:addLayer(_name, _kwagrs)
         if not _name then return end
-        
+
         _kwagrs = _kwagrs or { }
 
         _kwagrs.width = _kwagrs.width or resolutionX
         _kwagrs.height = _kwagrs.height or resolutionY
 
-        _kwagrs.camera = _kwagrs.camera or { 
+        _kwagrs.camera = _kwagrs.camera or {
             ox = 0,
             oy = 0,
             scale = 1

@@ -12,7 +12,7 @@ local scene = L2DF:initScene([[
     background: 100 100 100 100
     --music: "res/bg.mp3"
 
-    
+
     <node:image> logotype
         pic: 0 x: 0 y: 0
         <sprite>
@@ -24,6 +24,7 @@ local scene = L2DF:initScene([[
         x: 200
         y: 200
         text: "FUFUFU"
+        font: "Secondary"
     </text>
 
     <node:animation> loader
@@ -31,40 +32,40 @@ local scene = L2DF:initScene([[
         <sprite>
             file: "res/Loading/loading.png" w: 140 h: 140 x: 4 y: 3
         </sprite>
-        
+
         <frame> 1
             pic: 1 next: 2 wait: 2
-        </frame>    
+        </frame>
         <frame> 2
             pic: 2 next: 3 wait: 2
-        </frame>    
+        </frame>
         <frame> 3
             pic: 3 next: 4 wait: 2
-        </frame>    
+        </frame>
         <frame> 4
             pic: 4 next: 5 wait: 2
-        </frame>    
+        </frame>
         <frame> 5
             pic: 5 next: 6 wait: 2
-        </frame>    
+        </frame>
         <frame> 6
             pic: 6 next: 7 wait: 2
-        </frame>    
+        </frame>
         <frame> 7
             pic: 7 next: 8 wait: 2
-        </frame>    
+        </frame>
         <frame> 8
             pic: 8 next: 9 wait: 2
-        </frame>    
+        </frame>
         <frame> 9
             pic: 9 next: 10 wait: 2
-        </frame>    
+        </frame>
         <frame> 10
             pic: 10 next: 11 wait: 2
-        </frame>    
+        </frame>
         <frame> 11
             pic: 11 next: 12 wait: 2
-        </frame>    
+        </frame>
         <frame> 12
             pic: 12 next: 1 wait: 2
         </frame>

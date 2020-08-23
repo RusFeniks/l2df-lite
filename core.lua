@@ -28,10 +28,10 @@ end
 local core = { _VERSION = 1.0, _PATH = path }
 
     function core:init( _kwargs )
-        
+
         hookAllEvents(love.handlers)
         hookAllEvents({update = love.update, draw = love.draw})
-        
+
         self:require("log"):init()
         self:require("help"):init()
         self:require("parser"):init()
@@ -44,6 +44,7 @@ local core = { _VERSION = 1.0, _PATH = path }
         self:require("manager.render"):init()
         self:require("manager.fabric"):init()
         self:require("manager.resource"):init()
+        self:require("manager.font"):init()
         self:require("manager.event"):init()
         self:require("manager.scene"):init()
         self:require("manager.physics"):init()

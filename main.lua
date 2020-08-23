@@ -10,15 +10,18 @@ function love.load(  )
 
     local loader = core:require("loader")
     local scenes = core:require("manager.scene")
+    local font = core:require("manager.font")
 
     local set = core:require("manager.settings")
-    
+
+    font:preload("data/fonts.dat")
+
     for _fileName, _fileData in loader:requireDirectory( "scenes" ) do
         scenes:load(_fileName, _fileData)
     end
 
     core:require("manager.scene"):set("preloader")
-    
+
 end
 
 function love.update(  )
@@ -26,5 +29,5 @@ function love.update(  )
 end
 
 function love.draw()
-    
+
 end

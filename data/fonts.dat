@@ -1,0 +1,7 @@
+<font> Main
+    file: "res/fonts/main.otf"  size: 24
+</font>
+
+<font> Secondary
+    file: "res/fonts/secondary.otf"  size: 46
+</font>
