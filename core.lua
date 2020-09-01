@@ -12,7 +12,7 @@ local function hook( _function, _callback )
     return _function
 end
 
-local function hookAllEvents (eventsList)
+local function availableForTheHook (eventsList)
     if type(eventsList) ~= "table" then return end
     for _key, _val in pairs(eventsList) do
         functionsList[_key] = functionsList[_key] or { }
@@ -29,8 +29,8 @@ local core = { _VERSION = 1.0, _PATH = path }
 
     function core:init( _kwargs )
 
-        hookAllEvents(love.handlers)
-        hookAllEvents({update = love.update, draw = love.draw})
+        availableForTheHook(love.handlers)
+        availableForTheHook({update = love.update, draw = love.draw})
 
         self:require("log"):init()
         self:require("help"):init()
@@ -42,6 +42,7 @@ local core = { _VERSION = 1.0, _PATH = path }
         self:require("manager.settings"):init(_kwargs)
 
         self:require("manager.render"):init()
+
         self:require("manager.fabric"):init()
         self:require("manager.resource"):init()
         self:require("manager.font"):init()

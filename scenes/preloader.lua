@@ -1,12 +1,10 @@
 local log = L2DF:require("log")
-
-local behaviour = L2DF:require("class.component.behaviour")
-local scenes = L2DF:require("manager.scene")
-local repository = L2DF:require("manager.repository")
-local resource = L2DF:require("manager.resource")
-
 local loader = L2DF:require("loader")
 
+local m_Scenes = L2DF:require("manager.scene")
+local m_Repository = L2DF:require("manager.repository")
+local m_Resource = L2DF:require("manager.resource")
+local m_Event = L2DF:require("manager.event")
 
 local scene = L2DF:initScene([[
     background: 100 100 100 100
@@ -14,18 +12,11 @@ local scene = L2DF:initScene([[
 
 
     <node:image> logotype
-        pic: 0 x: 0 y: 0
+        pic: 1 x: 0 y: 0
         <sprite>
             file: "res/Loading/1.png"
         </sprite>
     </node>
-
-    <node:text>
-        x: 200
-        y: 200
-        text: "FUFUFU"
-        font: "Secondary"
-    </text>
 
     <node:animation> loader
         x: 820 y: 400  frame: 1
@@ -72,34 +63,29 @@ local scene = L2DF:initScene([[
     </node>
 ]])
 
-local _push = scene.push
-function scene:push()
-    _push(self)
 
-    repository:create("state")
+scene.push = m_Event:hook(scene.push, function (self)
+    
+    m_Repository:create("state")
     for _fileName, _fileData in loader:requireDirectory( "data/states" ) do
-        repository:add("state", _fileName, _fileData)
+        m_Repository:add("state", _fileName, _fileData)
         log:success("- state loaded:", _fileName)
     end
 
-    repository:create("kind")
+    m_Repository:create("kind")
     for _fileName, _fileData in loader:requireDirectory( "data/kinds" ) do
-        repository:add("kind", _fileName, _fileData)
+        m_Repository:add("kind", _fileName, _fileData)
         log:success("- kind loaded:", _fileName)
     end
 
-end
+end)
 
-function scene:update()
-    if not self.active then return end
-    if not resource:checkTurn() then
-        --scenes:set("main_menu")
+m_Event:subscribe("update", function (self)
+    if not scene.active then return end
+    if not m_Resource:checkTurn() then
+        m_Scenes:set("main_menu")
     end
-end
-
-scene:addComponent(behaviour, {
-    update = scene.update
-})
+end, love)
 
 
 return scene

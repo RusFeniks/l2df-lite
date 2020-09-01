@@ -12,8 +12,16 @@ local insert = table.insert
 local remove = table.remove
 
 local subscribers = {}
+local funcStack = {}
 
 local event = {}
+
+    local function hook(_event)
+        return function (...)
+            _event(...)
+            event:call(_event, nil, ...)
+        end, _event
+    end
 
     function event:init(  )
         local _val
@@ -67,6 +75,17 @@ local event = {}
                 _callback(_target, ...)
             end
         end
+    end
+
+    function event:hook( _event, _callback )
+        _event = _event or function (...) end
+        if not funcStack[_event] then
+            local _call
+            _event, _call = hook(_event)
+            funcStack[_event] = _call
+        end
+        self:subscribe(funcStack[_event], _callback)
+        return _event
     end
 
 return event
